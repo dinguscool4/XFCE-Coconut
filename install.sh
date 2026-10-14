@@ -27,7 +27,8 @@ set_xfconf xsettings /Gtk/CursorThemeSize int 16
 
 set_xfconf xfwm4 /general/workspace_count int 3
 
-cp -r "$(dirname "$0")/.config" ~/
+git clone --depth 1 https://github.com/dinguscool4/XFCE-Coconut.git /tmp/xfce-coconut
+cp -r /tmp/xfce-coconut/.config ~/
 
 for m in 0 1 2 3 Virtual-1 Virtual-2 VGA-1 HDMI-1 HDMI-2 DP-1 DP-2 eDP-1 LVDS-1; do
     for w in 0 1 2; do
