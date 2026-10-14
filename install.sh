@@ -4,9 +4,7 @@ set -euo pipefail
 
 echo "Installing XFCE-Coconut"
 
-sudo pacman -S --needed xorg-server xfce4 xfce4-goodies lightdm lightdm-gtk-greeter pipewire pipewire-alsa pipewire-pulse wireplumber alsa-utils networkmanager network-manager-applet
-
-xdg-user-dirs-update
+sudo pacman -S --needed --noconfirm xorg-server xfce4 xfce4-goodies lightdm lightdm-gtk-greeter pipewire pipewire-alsa pipewire-pulse wireplumber alsa-utils networkmanager network-manager-applet xdg-user-dirs
 
 sudo systemctl enable lightdm
 sudo systemctl enable NetworkManager
