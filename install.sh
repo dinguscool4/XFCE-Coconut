@@ -11,7 +11,13 @@ xdg-user-dirs-update
 sudo systemctl enable lightdm
 sudo systemctl enable NetworkManager
 
-set_xfconf() { xfconf-query -c "$1" -p "$2" -n -t "$3" -s "$4"; }
+set_xfconf() {
+    if [ -n "${DBUS_SESSION_BUS_ADDRESS:-}" ]; then
+        xfconf-query -c "$1" -p "$2" -n -t "$3" -s "$4"
+    else
+        dbus-run-session -- xfconf-query -c "$1" -p "$2" -n -t "$3" -s "$4"
+    fi
+}
 
 set_xfconf xsettings /Net/ThemeName       string "HighContrast"
 set_xfconf xsettings /Net/IconThemeName   string "elementary-xfce"
